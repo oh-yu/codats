@@ -19,8 +19,8 @@ import matplotlib.pyplot as plt
 from absl import app
 from absl import flags
 
-from datasets import datasets
-from datasets.normalization import calc_normalization, apply_normalization
+import datasets
+from normalization import calc_normalization, apply_normalization
 
 FLAGS = flags.FLAGS
 
