@@ -294,6 +294,13 @@ class Dataset:
         return self.class_labels[label_index]
 
 
+@register_dataset("ecodataset")
+class EcoDataset(Dataset):
+    def __init__(self):
+        pass
+    # TODO: Implementation
+
+
 @register_dataset("uwave")
 class uWaveBase(Dataset):
     """
