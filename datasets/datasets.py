@@ -296,6 +296,7 @@ class Dataset:
 
 @register_dataset("ecodataset")
 class EcoDataset(Dataset):
+    users = one_to_n(5)  # 5 households
     def __init__(self):
         pass
     # TODO: Implementation
