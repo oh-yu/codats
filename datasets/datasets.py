@@ -19,7 +19,7 @@ from sklearn.model_selection import train_test_split
 from absl import app
 from absl import flags
 
-from normalization import calc_normalization, calc_normalization_jagged, \
+from datasets.normalization import calc_normalization, calc_normalization_jagged, \
     apply_normalization, apply_normalization_jagged
 
 FLAGS = flags.FLAGS
