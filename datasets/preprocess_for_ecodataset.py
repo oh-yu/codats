@@ -8,8 +8,8 @@ flags.DEFINE_integer("household_id", 2, "Indicator of household data")
 
 def main(argv):
     # 1. Load data
-    X = pd.read_csv(f"./datasets/{FLAGS.household_id}_X_train.csv").values
-    y = pd.read_csv(f"./datasets/{FLAGS.household_id}_Y_train.csv").values.reshape(-1)
+    X = pd.read_csv(f"./datasets/ecodataset/{FLAGS.household_id}_X_train.csv").values
+    y = pd.read_csv(f"./datasets/ecodataset/{FLAGS.household_id}_Y_train.csv").values.reshape(-1)
     
     # 2. Apply Sliding Window
     len_data, H = X.shape
