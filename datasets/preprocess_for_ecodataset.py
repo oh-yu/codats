@@ -9,7 +9,7 @@ flags.DEFINE_integer("household_id", 2, "Indicator of household data")
 def main(argv):
     # 1. Load data
     X = pd.read_csv(f"./datasets/ecodataset/{FLAGS.household_id}_X_train.csv").values
-    y = pd.read_csv(f"./datasets/ecodataset/{FLAGS.household_id}_Y_train.csv").values.reshape(-1)
+    y = pd.read_csv(f"./datasets/ecodataset/{FLAGS.household_id}_Y_train.csv").values.reshape(-1).astype(np.float32)
     
     # 2. Apply Sliding Window
     len_data, H = X.shape
@@ -36,7 +36,7 @@ def main(argv):
 
     # 4. Write tfrecord
     write_tfrecord(f"./datasets/tfrecords/ecodataset_{FLAGS.household_id}_train.tfrecord", train_X, train_y)
-    write_tfrecord(f"./datasets/tfrecords/ecodataset_{FLAGS.household_id}_val.tfrecord", val_X, val_y)
+    write_tfrecord(f"./datasets/tfrecords/ecodataset_{FLAGS.household_id}_valid.tfrecord", val_X, val_y)
     write_tfrecord(f"./datasets/tfrecords/ecodataset_{FLAGS.household_id}_test.tfrecord", test_X, test_y)
 
 if __name__ == "__main__":
