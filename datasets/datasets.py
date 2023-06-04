@@ -304,7 +304,7 @@ class EcoDatasetBase(Dataset):
     def __init__(self, users, *args, **kwargs):
         self.users = users
         # TODO: Understand difference between users and self.users
-        super().__init__(EcoDataset.num_classes, EcoDataset.class_labels, None, None, EcoDataset.feature_names, *args, **kwargs)
+        super().__init__(EcoDatasetBase.num_classes, EcoDatasetBase.class_labels, None, None, EcoDatasetBase.feature_names, *args, **kwargs)
     
     def load(self):
         # 1: Load .csv
