@@ -299,8 +299,12 @@ class EcoDataset(Dataset):
     users = one_to_n(5)  # 5 households
     num_classes = 2
     class_labels = ["Occupied", "Unoccupied"]
-    def __init__(self):
-        pass
+    feature_names = ['Ratio', 'Mean', 'Max', 'Min', 'Std', 'Range', 'Lag-1_Ratio', 'Lag+1_Ratio', 'Season', 'Sunday', 'Am', 'Lunch', 'Pm']
+    def __init__(self, users, *args, **kwargs):
+        self.users = users
+        # TODO: Understand difference between users and self.users
+        super().__init__(EcoDataset.num_classes, EcoDataset.class_labels, None, None, EcoDataset.feature_names, *args, **kwargs)
+        # TODO: Understand initialization
     # TODO: Implementation
 
 
