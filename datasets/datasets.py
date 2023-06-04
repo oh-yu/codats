@@ -326,8 +326,6 @@ class EcoDatasetBase(Dataset):
 
         # 3. Split into train, test
         train_data, train_labels, test_data, test_labels = self.train_test_split(filtered_X, filtered_y)
-        # TODO: Understand self.train_test_split()
-        # TODO: Call np.array().tolist()
         return train_data, train_labels, test_data, test_labels
 
 
