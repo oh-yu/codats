@@ -14,6 +14,7 @@ import scipy.io
 import numpy as np
 import tensorflow as tf
 
+import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from absl import app
@@ -304,8 +305,30 @@ class EcoDataset(Dataset):
         self.users = users
         # TODO: Understand difference between users and self.users
         super().__init__(EcoDataset.num_classes, EcoDataset.class_labels, None, None, EcoDataset.feature_names, *args, **kwargs)
-        # TODO: Understand initialization
-    # TODO: Implementation
+    
+    def load(self):
+        # 1: Load .csv
+        X = pd.read_csv(f"./datasets/ecodataset/{FLAGS.household_id}_X_train.csv").values
+        y = pd.read_csv(f"./datasets/ecodataset/{FLAGS.household_id}_Y_train.csv").values.reshape(-1).astype(np.float32)
+        # TODO: Cannnot use FLAGS.household_id
+
+        # 2. Apply Sliding Window
+        len_data, H = X.shape
+        filter_len = 3
+        N = len_data - filter_len + 1
+        filtered_X = np.zeros((N, filter_len, H))
+        for i in range(0, N):
+            # print(f"(Start, End) = {i, i+filter_len-1}")
+            start = i
+            end = i+filter_len
+            filtered_X[i] = X[start:end]
+        filtered_y = y[filter_len-1:]
+
+        # 3. Split into train, test
+        train_data, train_labels, test_data, test_labels = self.train_test_split(filtered_X, filtered_y)
+        # TODO: Understand self.train_test_split()
+        # TODO: Call np.array().tolist()
+        return train_data, train_labels, test_data, test_labels
 
 
 @register_dataset("uwave")
