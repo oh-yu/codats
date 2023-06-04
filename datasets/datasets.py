@@ -296,7 +296,7 @@ class Dataset:
 
 
 @register_dataset("ecodataset")
-class EcoDataset(Dataset):
+class EcoDatasetBase(Dataset):
     users = one_to_n(5)  # 5 households
     num_classes = 2
     class_labels = ["Occupied", "Unoccupied"]
