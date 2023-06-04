@@ -303,7 +303,6 @@ class EcoDatasetBase(Dataset):
     feature_names = ['Ratio', 'Mean', 'Max', 'Min', 'Std', 'Range', 'Lag-1_Ratio', 'Lag+1_Ratio', 'Season', 'Sunday', 'Am', 'Lunch', 'Pm']
     def __init__(self, users, *args, **kwargs):
         self.users = users
-        # TODO: Understand difference between users and self.users
         super().__init__(EcoDatasetBase.num_classes, EcoDatasetBase.class_labels, None, None, EcoDatasetBase.feature_names, *args, **kwargs)
     
     def load(self):
