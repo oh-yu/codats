@@ -308,13 +308,13 @@ class EcoDatasetBase(Dataset):
     
     def load(self):
         # 1: Load .csv
-        X = pd.read_csv(f"./datasets/ecodataset/{FLAGS.household_id}_X_train.csv").values
-        y = pd.read_csv(f"./datasets/ecodataset/{FLAGS.household_id}_Y_train.csv").values.reshape(-1).astype(np.float32)
-        # TODO: Cannnot use FLAGS.household_id
+        X = pd.read_csv(f"./datasets/ecodataset/{FLAGS.source[-1]}_X_train.csv").values
+        y = pd.read_csv(f"./datasets/ecodataset/{FLAGS.source[-1]}_Y_train.csv").values.reshape(-1).astype(np.float32)
+        # TODO: Cannot load target
 
         # 2. Apply Sliding Window
         len_data, H = X.shape
-        filter_len = 3
+        filter_len = 100
         N = len_data - filter_len + 1
         filtered_X = np.zeros((N, filter_len, H))
         for i in range(0, N):
