@@ -13,7 +13,7 @@ def main(argv):
     
     # 2. Apply Sliding Window
     len_data, H = X.shape
-    filter_len = 3
+    filter_len = 100
     N = len_data - filter_len + 1
     filtered_X = np.zeros((N, filter_len, H))
     for i in range(0, N):
