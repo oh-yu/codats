@@ -299,7 +299,7 @@ class Dataset:
 class EcoDatasetBase(Dataset):
     users = one_to_n(5)  # 5 households
     num_classes = 2
-    class_labels = ["Occupied", "Unoccupied"]
+    class_labels = ["Unoccupied", "Occupied"]
     feature_names = ['Ratio', 'Mean', 'Max', 'Min', 'Std', 'Range', 'Lag-1_Ratio', 'Lag+1_Ratio', 'Season', 'Sunday', 'Am', 'Lunch', 'Pm']
     def __init__(self, users, *args, **kwargs):
         self.users = users
